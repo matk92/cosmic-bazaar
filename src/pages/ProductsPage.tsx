@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ShoppingCart, Search, Menu, X, Star, Filter } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -15,14 +15,20 @@ export default function ProductsPage() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  const products = [
-    { id: 1, name: "Échantillon de Sol Martien", price: 299.99, rating: 4.5, image: "/placeholder.svg?height=300&width=300" },
-    { id: 2, name: "Dispositif d'Intrication Quantique", price: 799.99, rating: 4.8, image: "/placeholder.svg?height=300&width=300" },
-    { id: 3, name: "Nébuleuse en Bouteille", price: 149.99, rating: 4.2, image: "/placeholder.svg?height=300&width=300" },
-    { id: 4, name: "Bottes Anti-Gravité", price: 599.99, rating: 4.7, image: "/placeholder.svg?height=300&width=300" },
-    { id: 5, name: "Traducteur de Langue Alien", price: 399.99, rating: 4.4, image: "/placeholder.svg?height=300&width=300" },
-    { id: 6, name: "Bouclier de Rayons Cosmiques", price: 899.99, rating: 4.9, image: "/placeholder.svg?height=300&width=300" },
+  const featuredProducts = [
+    { id: 1, name: 'Agricium', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '999 UEC', rating: 4.5, image: '/img/metal.png' },
+    { id: 2, name: 'Astatine', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '1200 UEC', rating: 4.5, image: '/img/astatine.png' },
+    { id: 3, name: 'Aphorite', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '850 UEC', rating: 4.5, image: '/img/mineral.png' }
   ]
+
+  const newArrivals = [
+    { id: 4, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg' },
+    { id: 5, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png' },
+    { id: 6, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg' },
+    { id: 7, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg' }
+  ]
+
+  const products = [...featuredProducts, ...newArrivals]
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
@@ -49,23 +55,22 @@ export default function ProductsPage() {
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Gamme de Prix</label>
               <Slider
-                min={0}
+                defaultValue={[priceRange[0], priceRange[1]]}
                 max={1000}
                 step={10}
-                value={priceRange}
-                onValueChange={setPriceRange}
+                onValueChange={(value) => setPriceRange(value)}
                 className="mb-2"
               />
               <div className="flex justify-between text-sm">
-                <span>{priceRange[0]} €</span>
-                <span>{priceRange[1]} €</span>
+                <span>{priceRange[0]} UEC</span>
+                <span>{priceRange[1]} UEC</span>
               </div>
             </div>
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2">Catégorie</label>
               {['Plantes Aliens', 'Armes Rares', 'Minéraux Exotiques', 'Pièces de Vaisseaux Spatiaux'].map((category) => (
                 <div key={category} className="flex items-center mb-2">
-                  <input type="checkbox" id={category} className="mr-2" />
+                  <Checkbox id={category} className="mr-2" />
                   <label htmlFor={category}>{category}</label>
                 </div>
               ))}
@@ -81,13 +86,15 @@ export default function ProductsPage() {
                 <div className="p-4">
                   <h3 className="text-lg font-semibold mb-2 text-purple-300">{product.name}</h3>
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl text-purple-400 font-bold">{product.price} €</span>
+                    <span className="text-2xl text-purple-400 font-bold">{product.price}</span>
                     <div className="flex items-center">
                       <Star className="h-5 w-5 text-yellow-400 fill-current" />
                       <span className="ml-1 text-yellow-400">{product.rating}</span>
                     </div>
                   </div>
-                  <Button className="w-full mt-4 bg-purple-600 hover:bg-purple-700">Ajouter au Panier</Button>
+                  <Link to={`/products/${product.id}`}>
+                    <Button className="w-full mt-4 bg-purple-600 hover:bg-purple-700">Voir Détails</Button>
+                  </Link>
                 </div>
               </div>
             ))}

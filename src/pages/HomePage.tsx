@@ -1,11 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { ShoppingCart, Search, Menu, X, Star, ChevronRight } from 'lucide-react'
+import { Star, ChevronRight, ChevronLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,18 +23,25 @@ export default function HomePage() {
     { id: 1, name: 'Agricium', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '999 UEC', rating: 4.5, image: '/img/metal.png' },
     { id: 2, name: 'Astatine', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '1200 UEC', rating: 4.5, image: '/img/astatine.png' },
     { id: 3, name: 'Aphorite', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '850 UEC', rating: 4.5, image: '/img/mineral.png' },
+    { id: 4, name: 'Agricium', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '999 UEC', rating: 4.5, image: '/img/metal.png' },
+    { id: 5, name: 'Astatine', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '1200 UEC', rating: 4.5, image: '/img/astatine.png' },
+    { id: 6, name: 'Aphorite', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '850 UEC', rating: 4.5, image: '/img/mineral.png' },
   ]
 
   const newArrivals = [
-    { id: 1, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg' },
-    { id: 2, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png' },
-    { id: 3, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg' },
-    { id: 4, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg' },
+    { id: 7, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg' },
+    { id: 8, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png' },
+    { id: 9, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg' },
+    { id: 10, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg' },
+    { id: 11, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg' },
+    { id: 12, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png' },
+    { id: 13, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg' },
+    { id: 14, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg' },
   ]
 
   const promotions = [
-    { id: 1, name: 'Promotion 1', description: 'Profitez de réductions incroyables sur des articles sélectionnés à travers la galaxie !', image: '/img/promo1.png' },
-    { id: 2, name: 'Promotion 2', description: 'Profitez de réductions incroyables sur des articles sélectionnés à travers la galaxie !', image: '/img/promo2.png' },
+    { id: 15, name: 'Agricultural Supplies', description: 'Profitez de réductions incroyables sur des articles sélectionnés à travers la galaxie !', image: '/img/Agricultural_Supplies.png' },
+    { id: 16, name: 'Ranta Dung', description: 'Profitez de réductions incroyables sur des articles sélectionnés à travers la galaxie !', image: '/img/Ranta_Dung.png' },
   ]
 
   return (
@@ -71,24 +85,36 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             Trésors Cosmiques en Vedette
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <div key={product.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2">
-                <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-2 text-purple-300">{product.name}</h3>
-                  <p className="text-gray-400 mb-4">{product.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl text-purple-400 font-bold">{product.price}</span>
-                    <div className="flex items-center">
-                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                      <span className="ml-1 text-yellow-400">{product.rating}</span>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {featuredProducts.map((product) => (
+                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
+                    <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
+                    <div className="p-6">
+                      <h3 className="text-2xl font-semibold mb-2 text-purple-300">{product.name}</h3>
+                      <p className="text-gray-400 mb-4">{product.description}</p>
+                      <div className="flex justify-between items-center">
+                        <span className="text-2xl text-purple-400 font-bold">{product.price}</span>
+                        <div className="flex items-center">
+                          <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                          <span className="ml-1 text-yellow-400">{product.rating}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
@@ -120,17 +146,29 @@ export default function HomePage() {
           <h2 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             Nouvelles Arrivées Cosmiques
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {newArrivals.map((product) => (
-              <div key={product.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2 text-purple-300">{product.name}</h3>
-                  <p className="text-2xl text-purple-400 font-bold">{product.price}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {newArrivals.map((product) => (
+                <CarouselItem key={product.id} className="md:basis-1/3 lg:basis-1/4">
+                  <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
+                    <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold mb-2 text-purple-300">{product.name}</h3>
+                      <p className="text-2xl text-purple-400 font-bold">{product.price}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
@@ -143,7 +181,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {promotions.map((promo) => (
               <div key={promo.id} className="bg-gray-700 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-                <img src={promo.image} alt={promo.name} className="w-full md:w-1/2 object-cover" />
+                <img src={promo.image} alt={promo.name} className="w-full md:w-1/2 h-64 object-cover" />
                 <div className="p-6 flex-1 flex flex-col justify-center">
                   <h3 className="text-2xl font-semibold mb-2 text-purple-300">{promo.name}</h3>
                   <p className="text-gray-400 mb-4">{promo.description}</p>

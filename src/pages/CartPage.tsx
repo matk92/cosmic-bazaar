@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { ShoppingCart, Search, Menu, X, Trash2, Plus, Minus } from 'lucide-react'
+import { Trash2, Plus, Minus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
