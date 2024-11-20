@@ -36,19 +36,19 @@ export default function ContactPage() {
           <form className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">Nom</label>
-              <Input id="name" placeholder="Votre Nom" />
+              <Input id="name" placeholder="Votre Nom" className="border-gray-700 focus:border-purple-500" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-              <Input id="email" type="email" placeholder="votre@email.com" />
+              <Input id="email" type="email" placeholder="votre@email.com" className="border-gray-700 focus:border-purple-500" />
             </div>
             <div>
               <label htmlFor="subject" className="block text-sm font-medium mb-2">Sujet</label>
-              <Input id="subject" placeholder="Quel est le sujet ?" />
+              <Input id="subject" placeholder="Quel est le sujet ?" className="border-gray-700 focus:border-purple-500" />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-              <Textarea id="message" placeholder="Votre message ici..." rows={5} />
+              <Textarea id="message" placeholder="Votre message ici..." rows={5} className="border-gray-700 focus:border-purple-500" />
             </div>
             <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
               Envoyer le Message

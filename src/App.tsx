@@ -7,6 +7,12 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import FAQPage from './pages/FAQPage'
+import ReturnsExchangesPage from './pages/ReturnsExchangesPage'
+import ShippingInfoPage from './pages/ShippingInfoPage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
   return (
@@ -20,6 +26,12 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/returns-exchanges" element={<ReturnsExchangesPage />} />
+        <Route path="/shipping-info" element={<ShippingInfoPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   )

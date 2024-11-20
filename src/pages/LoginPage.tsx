@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Link } from 'react-router-dom'
+import { ChevronLeft } from 'lucide-react'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -94,6 +95,12 @@ export default function LoginPage() {
               Sign up
             </Link>
           </p>
+        </div>
+        <div className="text-center mt-4">
+          <Link to="/" className="inline-flex items-center text-purple-400 hover:text-purple-300">
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            Back to Home
+          </Link>
         </div>
       </div>
     </div>

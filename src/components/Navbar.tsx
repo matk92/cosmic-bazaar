@@ -24,7 +24,9 @@ export default function Navbar() {
           <Link to="/cart">
             <ShoppingCart className="h-6 w-6 text-gray-400 hover:text-purple-400 cursor-pointer transition-colors" />
           </Link>
-          <Link to="/register" className="hover:text-purple-400 transition-colors">Login/Register</Link>
+          <Link to="/login" className="hover:text-purple-400 transition-colors">Login</Link>
+          <span className="text-gray-400">|</span>
+          <Link to="/register" className="hover:text-purple-400 transition-colors">Register</Link>
           <Button onClick={toggleMenu} variant="ghost" size="icon" className="md:hidden">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -36,7 +38,9 @@ export default function Navbar() {
           <Link to="/" className="block py-2 hover:text-purple-400 transition-colors">Home</Link>
           <Link to="/products" className="block py-2 hover:text-purple-400 transition-colors">Products</Link>
           <Link to="/contact" className="block py-2 hover:text-purple-400 transition-colors">Contact</Link>
-          <Link to="/register" className="block py-2 hover:text-purple-400 transition-colors">Login/Register</Link>
+          <Link to="/login" className="block py-2 hover:text-purple-400 transition-colors">Login</Link>
+          <span className="block py-2 text-gray-400">|</span>
+          <Link to="/register" className="block py-2 hover:text-purple-400 transition-colors">Register</Link>
         </div>
       )}
     </nav>

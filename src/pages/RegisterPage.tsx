@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Link } from 'react-router-dom'
+import { ChevronLeft } from 'lucide-react'
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -91,6 +92,12 @@ export default function RegisterPage() {
               Sign in
             </Link>
           </p>
+        </div>
+        <div className="text-center mt-4">
+          <Link to="/" className="inline-flex items-center text-purple-400 hover:text-purple-300">
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            Back to Home
+          </Link>
         </div>
       </div>
     </div>
