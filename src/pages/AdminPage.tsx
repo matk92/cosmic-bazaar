@@ -8,10 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { PlusCircle, Pencil, Trash2, Star, Tag, Users, ShoppingCart, BarChart2 } from 'lucide-react'
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 
 export default function AdminPage() {
-  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("dashboard")
 
   const salesData = [
@@ -43,7 +41,6 @@ export default function AdminPage() {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab)
-    navigate(`/admin/${tab}`)
   }
 
   return (
@@ -98,7 +95,7 @@ export default function AdminPage() {
       {/* Main Content */}
       <div className="flex-1 p-8 overflow-auto">
         <Tabs value={activeTab} onValueChange={handleTabChange}>
-          <TabsList>
+          <TabsList className="hidden">
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="products">Products</TabsTrigger>
             <TabsTrigger value="orders">Orders</TabsTrigger>
@@ -106,12 +103,11 @@ export default function AdminPage() {
             <TabsTrigger value="reviews">Reviews</TabsTrigger>
             <TabsTrigger value="promotions">Promotions</TabsTrigger>
           </TabsList>
-
           <TabsContent value="dashboard">
             <div>
               <h2 className="text-3xl font-bold mb-4">Dashboard</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <Card>
+                <Card className="bg-gray-800">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
                     <svg
@@ -134,7 +130,7 @@ export default function AdminPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-gray-800">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Active Users</CardTitle>
                     <svg
@@ -159,7 +155,7 @@ export default function AdminPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-gray-800">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Products in Stock</CardTitle>
                     <svg
@@ -183,7 +179,7 @@ export default function AdminPage() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-gray-800">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">Active Sales</CardTitle>
                     <svg
@@ -207,7 +203,7 @@ export default function AdminPage() {
                   </CardContent>
                 </Card>
               </div>
-              <Card className="w-full h-96">
+              <Card className="w-full h-96 bg-gray-800">
                 <CardHeader>
                   <CardTitle>Sales Overview</CardTitle>
                 </CardHeader>
@@ -340,7 +336,7 @@ export default function AdminPage() {
           <TabsContent value="reviews">
             <div>
               <h2 className="text-3xl font-bold mb-4">Reviews and Feedback</h2>
-              <Card>
+              <Card className="bg-gray-800">
                 <CardHeader>
                   <CardTitle>Latest Reviews</CardTitle>
                 </CardHeader>
@@ -368,7 +364,7 @@ export default function AdminPage() {
           <TabsContent value="promotions">
             <div>
               <h2 className="text-3xl font-bold mb-4">Promotions and Discounts</h2>
-              <Card>
+              <Card className="bg-gray-800">
                 <CardHeader>
                   <CardTitle>Create New Promotion</CardTitle>
                 </CardHeader>

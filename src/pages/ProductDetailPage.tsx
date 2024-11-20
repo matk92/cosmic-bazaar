@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ShoppingCart, Heart, Star, ChevronLeft, Plus, Minus } from 'lucide-react'
+import { Heart, Star, ChevronLeft, Plus, Minus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -55,7 +55,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 pt-20">
         <Link to="/products" className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-6">
           <ChevronLeft className="h-4 w-4 mr-1" />
           Back to Products

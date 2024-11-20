@@ -7,7 +7,7 @@ export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 pt-20">
         <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
           Terms of Service
         </h1>

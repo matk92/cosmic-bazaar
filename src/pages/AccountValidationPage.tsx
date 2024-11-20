@@ -3,10 +3,10 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Link } from 'react-router-dom'
 import { ChevronLeft, AlertCircle, CheckCircle2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import CosmicBackgroundV5 from '../components/cosmic-background'
 
 export default function AccountValidationPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -66,9 +66,10 @@ export default function AccountValidationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col justify-center items-center px-4">
+    <div className="relative min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col justify-center items-center px-4">
+      <CosmicBackgroundV5 />
       <motion.div 
-        className="max-w-md w-full space-y-8"
+        className="relative max-w-md w-full space-y-8 bg-gray-700 bg-opacity-10 backdrop-filter backdrop-blur-md p-8 rounded-lg"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

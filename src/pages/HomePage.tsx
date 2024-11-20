@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Star, ChevronRight, ChevronLeft } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Star, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
@@ -10,12 +10,24 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+  useEffect(() => {
+    const hasAccepted = localStorage.getItem('hasAcceptedPopup')
+    if (!hasAccepted) {
+      setIsPopupOpen(true)
+    }
+  }, [])
+
+  const handlePopupClose = () => {
+    localStorage.setItem('hasAcceptedPopup', 'true')
+    setIsPopupOpen(false)
+  }
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
@@ -48,6 +60,21 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
 
+      {/* Popup */}
+      <Dialog open={isPopupOpen} onOpenChange={setIsPopupOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Attention</DialogTitle>
+            <DialogDescription>
+              Ce site est fictif et a été créé dans le cadre d'un projet scolaire. Aucun produit n'est réellement en vente.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button onClick={handlePopupClose}>J'ai compris</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       {/* Menu Mobile */}
       {isMenuOpen && (
         <div className="md:hidden bg-gray-800 p-4 absolute w-full z-40">
@@ -72,9 +99,12 @@ export default function HomePage() {
               Bienvenue chez Cosmic-Bazaar
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300">Votre portail vers le commerce intergalactique</p>
-            <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+            <Link
+              to="/products"
+              className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-sm font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+            >
               Explorer Maintenant
-            </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -95,25 +125,25 @@ export default function HomePage() {
             <CarouselContent>
               {featuredProducts.map((product) => (
                 <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
-                    <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
-                    <div className="p-6">
-                      <h3 className="text-2xl font-semibold mb-2 text-purple-300">{product.name}</h3>
-                      <p className="text-gray-400 mb-4">{product.description}</p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-2xl text-purple-400 font-bold">{product.price}</span>
-                        <div className="flex items-center">
-                          <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                          <span className="ml-1 text-yellow-400">{product.rating}</span>
+                  <Link to={`/products/${product.id}`}>
+                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
+                      <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
+                      <div className="p-6">
+                        <h3 className="text-2xl font-semibold mb-2 text-purple-300">{product.name}</h3>
+                        <p className="text-gray-400 mb-4">{product.description}</p>
+                        <div className="flex justify-between items-center">
+                          <span className="text-2xl text-purple-400 font-bold">{product.price}</span>
+                          <div className="flex items-center">
+                            <Star className="h-5 w-5 text-yellow-400 fill-current" />
+                            <span className="ml-1 text-yellow-400">{product.rating}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </div>
       </section>
@@ -156,18 +186,18 @@ export default function HomePage() {
             <CarouselContent>
               {newArrivals.map((product) => (
                 <CarouselItem key={product.id} className="md:basis-1/3 lg:basis-1/4">
-                  <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
-                    <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-2 text-purple-300">{product.name}</h3>
-                      <p className="text-2xl text-purple-400 font-bold">{product.price}</p>
+                  <Link to={`/products/${product.id}`}>
+                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-purple-500/50 transition duration-300 ease-in-out transform hover:-translate-y-2 m-2">
+                      <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                      <div className="p-4">
+                        <h3 className="text-lg font-semibold mb-2 text-purple-300">{product.name}</h3>
+                        <p className="text-2xl text-purple-400 font-bold">{product.price}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
+import CosmicBackgroundV5 from '../components/cosmic-background'
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -24,9 +25,10 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col justify-center items-center px-4">
+    <div className="relative min-h-screen text-white flex flex-col justify-center items-center px-4">
+      <CosmicBackgroundV5 />
       <motion.div 
-        className="max-w-md w-full space-y-8"
+        className="relative max-w-md w-full space-y-8 bg-gray-700 bg-opacity-10 backdrop-filter backdrop-blur-md p-8 rounded-lg"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

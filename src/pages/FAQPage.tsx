@@ -1,5 +1,4 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -8,7 +7,7 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 pt-20">
         <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
           Frequently Asked Questions
         </h1>
