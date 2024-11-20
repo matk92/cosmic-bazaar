@@ -10,8 +10,8 @@ import Footer from '@/components/Footer'
 export default function CartPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Échantillon de Sol Martien", price: 299.99, quantity: 1, image: "/placeholder.svg?height=100&width=100" },
-    { id: 2, name: "Dispositif d'Intrication Quantique", price: 799.99, quantity: 2, image: "/placeholder.svg?height=100&width=100" },
+    { id: 1, name: "Hydrogen", price: 299.99, quantity: 1, image: "/img/astatine.png?height=100&width=100" },
+    { id: 2, name: "Coda Ascension", price: 799.99, quantity: 2, image: "/img/Coda_Ascension.jpg?height=100&width=100" },
   ])
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
@@ -60,11 +60,11 @@ export default function CartPage() {
                     <p className="text-purple-400">{item.price} €</p>
                   </div>
                   <div className="flex items-center">
-                    <Button variant="outline" size="icon" onClick={() => updateQuantity(item.id, -1)}>
+                    <Button variant="ghost" size="icon" onClick={() => updateQuantity(item.id, -1)} className="bg-gray-700 text-white hover:bg-gray-600">
                       <Minus className="h-4 w-4" />
                     </Button>
                     <span className="mx-2">{item.quantity}</span>
-                    <Button variant="outline" size="icon" onClick={() => updateQuantity(item.id, 1)}>
+                    <Button variant="ghost" size="icon" onClick={() => updateQuantity(item.id, 1)} className="bg-gray-700 text-white hover:bg-gray-600">
                       <Plus className="h-4 w-4" />
                     </Button>
                   </div>

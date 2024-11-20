@@ -97,8 +97,17 @@ export default function AdminPage() {
 
       {/* Main Content */}
       <div className="flex-1 p-8 overflow-auto">
-        <Routes>
-          <Route path="dashboard" element={
+        <Tabs value={activeTab} onValueChange={handleTabChange}>
+          <TabsList>
+            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+            <TabsTrigger value="products">Products</TabsTrigger>
+            <TabsTrigger value="orders">Orders</TabsTrigger>
+            <TabsTrigger value="users">Users</TabsTrigger>
+            <TabsTrigger value="reviews">Reviews</TabsTrigger>
+            <TabsTrigger value="promotions">Promotions</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="dashboard">
             <div>
               <h2 className="text-3xl font-bold mb-4">Dashboard</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -216,8 +225,9 @@ export default function AdminPage() {
                 </CardContent>
               </Card>
             </div>
-          } />
-          <Route path="products" element={
+          </TabsContent>
+
+          <TabsContent value="products">
             <div>
               <h2 className="text-3xl font-bold mb-4">Products Management</h2>
               <div className="mb-4">
@@ -256,8 +266,9 @@ export default function AdminPage() {
                 </TableBody>
               </Table>
             </div>
-          } />
-          <Route path="orders" element={
+          </TabsContent>
+
+          <TabsContent value="orders">
             <div>
               <h2 className="text-3xl font-bold mb-4">Orders</h2>
               <Table>
@@ -289,8 +300,9 @@ export default function AdminPage() {
                 </TableBody>
               </Table>
             </div>
-          } />
-          <Route path="users" element={
+          </TabsContent>
+
+          <TabsContent value="users">
             <div>
               <h2 className="text-3xl font-bold mb-4">Users</h2>
               <Table>
@@ -323,8 +335,9 @@ export default function AdminPage() {
                 </TableBody>
               </Table>
             </div>
-          } />
-          <Route path="reviews" element={
+          </TabsContent>
+
+          <TabsContent value="reviews">
             <div>
               <h2 className="text-3xl font-bold mb-4">Reviews and Feedback</h2>
               <Card>
@@ -350,8 +363,9 @@ export default function AdminPage() {
                 </CardContent>
               </Card>
             </div>
-          } />
-          <Route path="promotions" element={
+          </TabsContent>
+
+          <TabsContent value="promotions">
             <div>
               <h2 className="text-3xl font-bold mb-4">Promotions and Discounts</h2>
               <Card>
@@ -393,8 +407,8 @@ export default function AdminPage() {
                 </CardContent>
               </Card>
             </div>
-          } />
-        </Routes>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   )

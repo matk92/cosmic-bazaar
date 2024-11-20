@@ -12,7 +12,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import FAQPage from './pages/FAQPage'
 import ReturnsExchangesPage from './pages/ReturnsExchangesPage'
 import ShippingInfoPage from './pages/ShippingInfoPage'
-import AdminPage from './pages/AdminPage'
+import AccountValidationPage from './pages/AccountValidationPage'
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/returns-exchanges" element={<ReturnsExchangesPage />} />
         <Route path="/shipping-info" element={<ShippingInfoPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/account-validation" element={<AccountValidationPage />} />
       </Routes>
     </Router>
   )

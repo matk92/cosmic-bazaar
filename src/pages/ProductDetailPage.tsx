@@ -108,7 +108,7 @@ export default function ProductDetailPage() {
               <div>
                 <label htmlFor="quantity" className="block text-sm font-medium text-gray-400 mb-2">Quantity</label>
                 <div className="flex items-center space-x-2">
-                  <Button variant="outline" size="icon" onClick={decrementQuantity} className="text-gray-400 hover:text-purple-600">
+                  <Button variant="ghost" size="icon" onClick={decrementQuantity} className="bg-gray-700 text-white hover:bg-gray-600">
                     <Minus className="h-4 w-4" />
                   </Button>
                   <Input
@@ -116,9 +116,9 @@ export default function ProductDetailPage() {
                     id="quantity"
                     value={quantity}
                     onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-20 text-center"
+                    className="w-20 text-center bg-gray-800 border-gray-700 text-white no-arrows"
                   />
-                  <Button variant="outline" size="icon" onClick={incrementQuantity} className="text-gray-400 hover:text-purple-600">
+                  <Button variant="ghost" size="icon" onClick={incrementQuantity} className="bg-gray-700 text-white hover:bg-gray-600">
                     <Plus className="h-4 w-4" />
                   </Button>
                 </div>
@@ -129,7 +129,7 @@ export default function ProductDetailPage() {
               <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
                 Add to Cart
               </Button>
-              <Button variant="outline" size="icon" className="text-gray-400 hover:text-purple-600">
+              <Button variant="ghost" size="icon" className="bg-gray-700 text-white hover:bg-gray-600">
                 <Heart className="h-5 w-5" />
               </Button>
             </div>
@@ -138,9 +138,9 @@ export default function ProductDetailPage() {
 
         <Tabs defaultValue="features" className="mt-12">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="specs">Specifications</TabsTrigger>
-            <TabsTrigger value="reviews">Reviews</TabsTrigger>
+            <TabsTrigger value="features" className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white">Features</TabsTrigger>
+            <TabsTrigger value="specs" className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white">Specifications</TabsTrigger>
+            <TabsTrigger value="reviews" className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-pink-600 data-[state=active]:text-white">Reviews</TabsTrigger>
           </TabsList>
           <TabsContent value="features" className="mt-4">
             <ul className="list-disc pl-5 space-y-2 text-gray-300">

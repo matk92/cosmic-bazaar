@@ -4,33 +4,58 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ChevronLeft } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
 
+    // Simulating API call
     setTimeout(() => {
       setIsLoading(false)
+      navigate('/account-validation')
     }, 3000)
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col justify-center items-center px-4">
-      <div className="max-w-md w-full space-y-8">
+      <motion.div 
+        className="max-w-md w-full space-y-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          <motion.h2 
+            className="mt-6 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
             Join the Cosmic Community
-          </h2>
-          <p className="mt-2 text-sm text-gray-400">
+          </motion.h2>
+          <motion.p 
+            className="mt-2 text-sm text-gray-400"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
             Embark on your intergalactic shopping journey
-          </p>
+          </motion.p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={onSubmit}>
+        <motion.form 
+          className="mt-8 space-y-6" 
+          onSubmit={onSubmit}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <Label htmlFor="name" className="sr-only">
@@ -81,25 +106,35 @@ export default function RegisterPage() {
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
               disabled={isLoading}
             >
-              Sign up
+              {isLoading ? 'Signing up...' : 'Sign up'}
             </Button>
           </div>
-        </form>
-        <div className="text-center">
+        </motion.form>
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
           <p className="mt-2 text-sm text-gray-400">
             Already have an account?{' '}
             <Link to="/login" className="font-medium text-purple-400 hover:text-purple-300">
               Sign in
             </Link>
           </p>
-        </div>
-        <div className="text-center mt-4">
+        </motion.div>
+        <motion.div 
+          className="text-center mt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
           <Link to="/" className="inline-flex items-center text-purple-400 hover:text-purple-300">
             <ChevronLeft className="h-4 w-4 mr-1" />
             Back to Home
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
