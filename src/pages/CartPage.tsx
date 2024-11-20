@@ -8,15 +8,12 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export default function CartPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [cartItems, setCartItems] = useState([
     { id: 1, name: "Hydrogen", price: 299.99, quantity: 1, image: "/img/astatine.png?height=100&width=100" },
     { id: 2, name: "Coda Ascension", price: 799.99, quantity: 2, image: "/img/Coda_Ascension.jpg?height=100&width=100" },
   ])
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-
-  const updateQuantity = (id, change) => {
+  const updateQuantity = (id: number, change: number) => {
     setCartItems(cartItems.map(item => 
       item.id === id ? { ...item, quantity: Math.max(0, item.quantity + change) } : item
     ).filter(item => item.quantity > 0))
@@ -27,15 +24,6 @@ export default function CartPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-
-      {/* Menu Mobile */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 p-4 absolute w-full z-40">
-          <Link to="/" className="block py-2 hover:text-purple-400 transition-colors">Accueil</Link>
-          <Link to="/products" className="block py-2 hover:text-purple-400 transition-colors">Produits</Link>
-          <Link to="/contact" className="block py-2 hover:text-purple-400 transition-colors">Contact</Link>
-        </div>
-      )}
 
       <div className="container mx-auto px-4 py-16 pt-20">
         <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">

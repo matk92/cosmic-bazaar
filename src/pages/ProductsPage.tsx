@@ -10,10 +10,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export default function ProductsPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [priceRange, setPriceRange] = useState([0, 1000])
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const featuredProducts = [
     { id: 1, name: 'Agricium', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '999 UEC', rating: 4.5, image: '/img/metal.png' },
@@ -22,10 +19,10 @@ export default function ProductsPage() {
   ]
 
   const newArrivals = [
-    { id: 4, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg' },
-    { id: 5, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png' },
-    { id: 6, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg' },
-    { id: 7, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg' }
+    { id: 4, name: 'Coda Ascension', price: '499 UEC', image: '/img/Coda_Ascension.jpg', rating: 0 },
+    { id: 5, name: 'P8-AR', price: '599 UEC', image: '/img/P8-AR.png', rating: 0 },
+    { id: 6, name: 'AcryliPlex', price: '699 UEC', image: '/img/AcryliPlex.jpg', rating: 0 },
+    { id: 7, name: 'Jumping Limes', price: '799 UEC', image: '/img/Jumping_Limes.jpg', rating: 0 }
   ]
 
   const products = [...featuredProducts, ...newArrivals]
@@ -33,15 +30,6 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-
-      {/* Menu Mobile */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 p-4 absolute w-full z-40">
-          <Link to="/" className="block py-2 hover:text-purple-400 transition-colors">Accueil</Link>
-          <Link to="/products" className="block py-2 hover:text-purple-400 transition-colors">Produits</Link>
-          <Link to="/contact" className="block py-2 hover:text-purple-400 transition-colors">Contact</Link>
-        </div>
-      )}
 
       <div className="container mx-auto px-4 py-8 pt-20">
         <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">

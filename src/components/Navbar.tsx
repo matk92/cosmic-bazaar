@@ -113,7 +113,7 @@ export default function Navbar() {
               </Button>
             </Link>
             <Link to="/login">
-              <Button variant="solid" size="sm" className="text-white hover:bg-gray-800 border border-white transition-colors duration-300">
+              <Button variant="default" size="sm" className="text-white hover:bg-gray-800 border border-white transition-colors duration-300">
                 <LogIn className="mr-2 h-4 w-4" /> Login
               </Button>
             </Link>
@@ -157,7 +157,7 @@ export default function Navbar() {
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="solid" size="sm" className="w-full bg-black text-white hover:bg-gray-800 transition-colors duration-300">
+                <Button variant="default" size="sm" className="w-full bg-black text-white hover:bg-gray-800 transition-colors duration-300">
                   <LogIn className="mr-2 h-4 w-4" /> Login
                 </Button>
               </Link>

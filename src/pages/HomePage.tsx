@@ -14,7 +14,6 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
 
 export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   useEffect(() => {
@@ -28,8 +27,6 @@ export default function HomePage() {
     localStorage.setItem('hasAcceptedPopup', 'true')
     setIsPopupOpen(false)
   }
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const featuredProducts = [
     { id: 1, name: 'Agricium', description: 'Une trouvaille rare des profondeurs de l\'espace', price: '999 UEC', rating: 4.5, image: '/img/metal.png' },
@@ -74,15 +71,6 @@ export default function HomePage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      {/* Menu Mobile */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 p-4 absolute w-full z-40">
-          <Link to="/" className="block py-2 hover:text-purple-400 transition-colors">Accueil</Link>
-          <Link to="/products" className="block py-2 hover:text-purple-400 transition-colors">Produits</Link>
-          <Link to="/contact" className="block py-2 hover:text-purple-400 transition-colors">Contact</Link>
-        </div>
-      )}
 
       {/* Bannière Héro */}
       <div className="relative h-[70vh] bg-cover bg-center">

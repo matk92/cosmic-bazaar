@@ -1,31 +1,15 @@
 'use client'
-
-import { useState } from 'react'
 import { Send } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Link } from 'react-router-dom'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export default function ContactPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       <Navbar />
-
-      {/* Menu Mobile */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 p-4 absolute w-full z-40">
-          <Link to="/" className="block py-2 hover:text-purple-400 transition-colors">Accueil</Link>
-          <Link to="/products" className="block py-2 hover:text-purple-400 transition-colors">Produits</Link>
-          <Link to="/contact" className="block py-2 hover:text-purple-400 transition-colors">Contact</Link>
-        </div>
-      )}
 
       <div className="container mx-auto px-4 py-16 pt-20">
         <h1 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
