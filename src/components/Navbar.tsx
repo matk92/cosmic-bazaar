@@ -138,9 +138,6 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-gray-900/80 backdrop-blur-md p-4 absolute w-full z-40"
           >
-            <Link to="/products" className="block py-2 text-gray-300 hover:text-white transition-colors duration-300">
-              Products
-            </Link>
             <div className="mt-4 space-y-2">
               <form onSubmit={handleSearchSubmit}>
                 <Input
@@ -151,6 +148,15 @@ export default function Navbar() {
                   onChange={handleSearchChange}
                 />
               </form>
+              <Link to="/" className="block py-2 text-gray-300 hover:text-white transition-colors duration-300">
+              Home
+              </Link>
+              <Link to="/products" className="block py-2 text-gray-300 hover:text-white transition-colors duration-300">
+              Products
+              </Link>
+              <Link to="/contact" className="block py-2 text-gray-300 hover:text-white transition-colors duration-300">
+              Contact
+              </Link>
               <Link to="/admin">
                 <Button variant="ghost" size="sm" className="w-full text-left text-gray-300 hover:bg-black hover:text-white transition-colors duration-300">
                   <Settings className="mr-2 h-4 w-4" /> Admin
